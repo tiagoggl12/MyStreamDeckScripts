@@ -1,0 +1,22 @@
+---
+globs: *.ps1
+---
+## PowerShell Style and Conventions
+
+- Prefer explicit `param(...)` blocks with `[ValidateSet]` where applicable.
+- Use clear, descriptive parameter names and defaults; expose only useful switches.
+- Fail fast with meaningful `Write-Error` and non-zero exit when nothing actionable is found.
+- Avoid unnecessary `try/catch`; only catch where external calls may fail (COM, Win32, process start) and report context.
+- Keep functions small with single responsibility (e.g., `Start-ChatGPTBrowser`).
+- Avoid global state; pass parameters explicitly.
+- Quote paths by default to handle spaces; provide a `-NoQuotes` option only when necessary.
+- Favor `Set-Clipboard` for clipboard operations; echo to stdout for debug/testing.
+- When sending key chords via Win32 `SendInput`, isolate the interop in a dedicated type block and keep the public API minimal.
+
+### Windows Explorer selection patterns
+- Use `Shell.Application` COM to access `SelectedItems()` and the active folder; gracefully handle missing Explorer windows.
+- Provide a fallback to the current folder when nothing is selected (configurable via switch).
+
+### Stream Deck integration
+- Design scripts to run non-interactively: support `-NoProfile`, `-ExecutionPolicy Bypass`, and `-WindowStyle Hidden`.
+- Keep console output minimal and informative for log capture; prefer single-line success messages.

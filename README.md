@@ -112,3 +112,67 @@ Scripts StreamDeck/
 - 🔔 Toast de confirmação (notificação “Caminho copiado”)
 - 🎚️ Variantes do ChatGPT (Edge/Chrome, URL específica, delays diferentes)
 
+
+---
+
+## 🆕 Novos Scripts de Produtividade
+
+### 🕒 Insert-DateTime.ps1
+Copia a data/hora para o clipboard no formato escolhido e, se desejar, cola automaticamente (Ctrl+V) no app em foco.
+
+- Arquivo: `Insert-DateTime.ps1`
+- Parâmetros:
+  - `-Format` (string): formato .NET (padrão: `yyyy-MM-dd HH:mm`).
+  - `-Utc` (switch): usa UTC em vez do horário local.
+  - `-Paste` (switch): envia `Ctrl+V` após copiar.
+
+Exemplos:
+```powershell
+powershell -NoProfile -File .\Insert-DateTime.ps1
+powershell -NoProfile -File .\Insert-DateTime.ps1 -Format "dd/MM/yyyy"
+powershell -NoProfile -File .\Insert-DateTime.ps1 -Utc -Format "yyyy-MM-ddTHH:mm:ssZ" -Paste
+```
+
+Configuração no Stream Deck (Ação "Abrir"):
+```powershell
+-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\tiago\Downloads\Scripts StreamDeck\Insert-DateTime.ps1" -Paste
+```
+
+---
+
+### 🪟 Copy-ActiveWindowTitle.ps1
+Copia para o clipboard o título da janela atualmente em foco.
+
+- Arquivo: `Copy-ActiveWindowTitle.ps1`
+
+Exemplo:
+```powershell
+powershell -NoProfile -File .\Copy-ActiveWindowTitle.ps1
+```
+
+Configuração no Stream Deck (Ação "Abrir"):
+```powershell
+-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\tiago\Downloads\Scripts StreamDeck\Copy-ActiveWindowTitle.ps1"
+```
+
+---
+
+### 🚀 Open-WorkApps.ps1
+Abre rapidamente um conjunto de apps e URLs de trabalho, com pequeno atraso entre cada abertura.
+
+- Arquivo: `Open-WorkApps.ps1`
+- Parâmetros:
+  - `-Apps` (string[]): `edge`, `chrome`, `teams`, `outlook`, `explorer`.
+  - `-Urls` (string[]): URLs adicionais para abrir.
+  - `-DelayMs` (int): atraso entre aberturas (padrão: `200`).
+
+Exemplo:
+```powershell
+powershell -NoProfile -File .\Open-WorkApps.ps1 -Apps edge,teams -Urls "https://chatgpt.com/","https://outlook.office.com/mail/"
+```
+
+Configuração no Stream Deck (Ação "Abrir"):
+```powershell
+-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\tiago\Downloads\Scripts StreamDeck\Open-WorkApps.ps1" -Apps edge,teams -Urls "https://chatgpt.com/"
+```
+

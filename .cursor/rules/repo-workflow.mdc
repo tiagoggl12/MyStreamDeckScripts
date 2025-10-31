@@ -1,0 +1,22 @@
+---
+alwaysApply: false
+description: Repository workflow, Stream Deck usage notes, and troubleshooting pointers
+---
+## Repository Workflow & Usage
+
+- Scripts are Windows-focused; test locally with PowerShell before wiring to Stream Deck.
+- Default launch pattern from Stream Deck “Open” action:
+  - Program: `powershell.exe`
+  - Arguments: `-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File <script>`
+
+### Common tasks
+- Explorer paths to clipboard: see [Copy-SelectedPath.ps1](mdc:Copy-SelectedPath.ps1).
+- ChatGPT with voice typing: see [Start-ChatGPT-Voice.ps1](mdc:Start-ChatGPT-Voice.ps1).
+
+### Troubleshooting
+- Execution policy blocked: add `-ExecutionPolicy Bypass` in Stream Deck arguments.
+- Browser not found: ensure `msedge.exe`/`chrome.exe` is in PATH or use `-Browser default`.
+- Nothing selected in Explorer: toggle `-UseCurrentFolderIfNoSelection` or ensure a selection.
+
+### Documentation
+- See [README.md](mdc:README.md) for parameters, examples, and environment requirements.

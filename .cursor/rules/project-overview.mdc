@@ -1,0 +1,22 @@
+---
+alwaysApply: true
+---
+## Repository Overview
+
+This repo contains small Windows-focused PowerShell utilities designed to be triggered from Elgato Stream Deck.
+
+- Main scripts:
+  - [Copy-SelectedPath.ps1](mdc:Copy-SelectedPath.ps1): Copies path(s) of selected items in Windows Explorer to the clipboard, with joining and quoting options.
+  - [Start-ChatGPT-Voice.ps1](mdc:Start-ChatGPT-Voice.ps1): Opens ChatGPT in a browser and triggers Windows Voice Typing (Win+H).
+
+### How scripts are invoked
+- Intended execution: `powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File <script>` from a Stream Deck “Open” action.
+- Scripts are safe to run interactively for testing without Stream Deck.
+
+### Expected environment
+- Windows 10/11 with PowerShell 5+ or PowerShell 7.
+- Windows Explorer for selection-based features and `Shell.Application` COM.
+- Browsers: `msedge.exe` or `chrome.exe` in PATH for app-mode launch; otherwise default handler.
+
+### Quickstart and usage
+Refer to [README.md](mdc:README.md) for step-by-step setup, examples, and troubleshooting notes.
